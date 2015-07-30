@@ -1,8 +1,15 @@
 <h3> Show </h3>
+
 <div>
 	<%= @article.title %>
 </div>
 <div>
 	<%= @article.body %>
 </div>
+
+<h3>Comments</h3>
+<%= render @article.comments %>
+
+<%= render 'comments/form' %>
+
 <%= link_to "Home", articles_path %>
