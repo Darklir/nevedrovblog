@@ -1,7 +1,9 @@
-<%= form_for( [ @article, @article.comments.build ] ) do |f| %>
-<%= f.label :Commenter %>
-<%= f.text_field :title %>
-<%= f.label :Text %>
-<%= f.text_area :body %>
-<%= f.submit %>
+<%= form_for( [ @article, @article.comments.build ], html: { class: "form"}) do |f| %>
+	<% if current_user %>
+		<%= f.hidden_field :title, value: current_user.first_name %>
+	<% end %>
+	<%= f.label :Text %>
+	<%= f.text_area :body, class: "form-control" %>
+	<div class="counter" align="right">Characters left: 200</div>
+	<%= f.submit "Comment", class: "btn btn-lg btn-primary btn-block" %>
 <% end %>

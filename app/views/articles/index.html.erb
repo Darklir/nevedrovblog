@@ -1,18 +1,40 @@
-<h3>Index</h3>
-<% @articles.each do |article| %>
-<div>
-<%= article.title %>
-</div>
-<div>
-<%= article.body %>
-</div>
-<% if current_user && current_user.admin? %> HUYYYYYYYYYYYY <% end %>
-
-<%= link_to "Show", article_path(article) %>
-<%= link_to "Edit", edit_article_path(article) %>
-<%= link_to "Delete", article_path(article),
-      							method: :delete,
-      							data: { confirm: 'Are you sure?'}%> 
+<% content_for :home do %>
+  class="active"
 <% end %>
-<%= link_to "New article", new_article_path %>
 
+<div class="jumbotron">
+  <h1>WELCOM</h1>
+  <p>I'm glad to see you here=)</p>
+</div>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= link_to "New article", new_article_path, class: "btn btn-lg btn-info btn-block" %></h3>
+  </div>
+  <div class="panel-body">
+    <% @articles.each do |article| %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-6"><h1 class="panel-title"><%= article.title %></h1></div>
+          <div class="col-md-6" align="right"><h1 class="panel-title"><%= article.created_at %></h1></div>
+      	</div>
+      </div>
+      <div class="panel-body">
+        <%= article.body %>
+      </div>
+      <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-4"><%= link_to "Show", article_path(article), class: "btn btn-info btn-block" %> </div>
+            <div class="col-md-4"><%= link_to "Edit", edit_article_path(article), class: "btn btn-info btn-block" %></div>
+            <div class="col-md-4"><%= link_to "Delete", article_path(article),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?'},
+                    class: "btn btn-info btn-block" %></div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

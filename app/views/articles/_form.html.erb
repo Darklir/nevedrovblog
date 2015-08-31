@@ -1,21 +1,17 @@
-<%= form_for @article do |f| %>
+<%= form_for @article, html: { class: "form"} do |f| %>
 	<% if @article.errors.any? %>
-	<div>
-		<%= pluralize( @article.errors.count, "error") %>
-	</div>
-	<% @article.errors.full_messages.each do |msg| %>
-	<div>
-		<%= msg %>
-	</div>
+		<% @article.errors.full_messages.each do |msg| %>
+			<div class="alert alert-danger" role="alert">
+		  		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		  		<span class="sr-only">Error:</span>
+		  		<%= msg %>
+			</div>
+		<% end %>
 	<% end %>
-	<% end %>
-	<div>
+	
 	<%= f.label :title %>
-	<%= f.text_field :title %>
-	</div>
-	<div>
+	<%= f.text_field :title, class: "form-control" %></br>
 	<%= f.label :article %>
-	<%= f.text_area :body %>
-	</div>
-	<%= f.submit %>
+	<%= f.text_area :body, class: "form-control", rows: "20" %></br>
+	<%= f.submit class: "btn btn-lg btn-primary btn-block" %>
 <% end %>

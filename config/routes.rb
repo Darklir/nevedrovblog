@@ -2,13 +2,19 @@ Rails.application.routes.draw do
 
   root "articles#index"
 
+  get '/about' => 'pages#about'
+
+  get '/contact' => 'pages#contact'
+
   get '/login' => 'sessions#new'
 
   post 'login' => 'sessions#create'
 
   delete 'logout' => 'sessions#destroy'
   
-  resources :users, only: [:new, :create]
+  scope(:path_names => { :new => "SignUp" }) do
+    resources :users, except: :index
+  end
 
   resources :articles do
     resources :comments, only: [:new, :create, :destroy]

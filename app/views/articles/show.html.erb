@@ -1,15 +1,12 @@
-<h3> Show </h3>
-
-<div>
-	<%= @article.title %>
-</div>
-<div>
-	<%= @article.body %>
+<h3 align="center"><%= @article.title %></h3>
+<div class="panel panel-info">      
+    <div class="panel-body">
+        <%= @article.body %>
+    </div>
 </div>
 
 <h3>Comments</h3>
+
 <%= render @article.comments %>
 
 <%= render 'comments/form' %>
-
-<%= link_to "Home", articles_path %>
