@@ -10,9 +10,7 @@ gem 'pg', '0.18.1', group: :production
 
 ruby "2.2.2"
 
-group :production, :staging do
-      gem 'rails_12factor'
-end
+gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
